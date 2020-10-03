@@ -20,7 +20,7 @@ namespace BattleshipsTests
             {
                 new Coordinates('B', 1),
             };
-            
+
             var boardGeneratorMock = new Mock<IBoardGenerator>();
 
             boardGeneratorMock.Setup(x => x.Generate())
@@ -29,7 +29,7 @@ namespace BattleshipsTests
                     {
                         new Ship(new HashSet<Coordinates>(ship1Coordinates), "Test"),
                         new Ship(new HashSet<Coordinates>(ship2Coordinates), "Test")
-                    }, new SortedSet<Coordinates>(ship1Coordinates.Concat(ship2Coordinates))
+                    }
                 ));
 
             var fleetCommanderMock = new Mock<IFleetCommander>();
@@ -39,11 +39,11 @@ namespace BattleshipsTests
 
             var game = new Game(boardGeneratorMock.Object, fleetCommanderMock.Object, new Mock<ICommentator>().Object);
 
-            game.Play();
+            game.Play("", "");
 
             Assert.Pass("The game has stopped running");
         }
-        
+
         [Test]
         public void Play_BoardReceivesAllHitsByFleetCommander()
         {
@@ -52,20 +52,17 @@ namespace BattleshipsTests
                 new Coordinates('A', 1),
                 new Coordinates('A', 2)
             };
-            var ship = new Ship(new HashSet<Coordinates>(shipCoordinates), "Test"); 
+            var ship = new Ship(new HashSet<Coordinates>(shipCoordinates), "Test");
             var boardGeneratorMock = new Mock<IBoardGenerator>();
             var boardMock = new Mock<IBoard>();
-            
+
             boardMock.SetupSequence(x => x.ReceiveShot(It.Is<Coordinates>(c => shipCoordinates.Contains(c))))
                 .Returns(new ShipShotResult(ShotResult.Hit, new Maybe<Ship>(ship)))
                 .Returns(new ShipShotResult(ShotResult.Won, new Maybe<Ship>(ship)));
-            
+
             boardMock.Setup(x => x.ReceiveShot(It.Is<Coordinates>(c => !shipCoordinates.Contains(c))))
                 .Returns(new ShipShotResult(ShotResult.Missed, new Maybe<Ship>()));
-            
-            boardMock.Setup(x => x.AllCoordinates)
-                .Returns(new SortedSet<Coordinates>(shipCoordinates));
-            
+
             boardGeneratorMock.Setup(x => x.Generate())
                 .Returns(boardMock.Object);
 
@@ -79,11 +76,11 @@ namespace BattleshipsTests
 
             var game = new Game(boardGeneratorMock.Object, fleetCommanderMock.Object, new Mock<ICommentator>().Object);
 
-            game.Play();
-            
-            boardMock.Verify(x=>x.ReceiveShot(shipCoordinates[0]), Times.Once());
-            boardMock.Verify(x=>x.ReceiveShot(shipCoordinates[1]), Times.Once());
-            boardMock.Verify(x=>x.ReceiveShot(It.IsAny<Coordinates>()), Times.Exactly(5));
+            game.Play("", "");
+
+            boardMock.Verify(x => x.ReceiveShot(shipCoordinates[0]), Times.Once());
+            boardMock.Verify(x => x.ReceiveShot(shipCoordinates[1]), Times.Once());
+            boardMock.Verify(x => x.ReceiveShot(It.IsAny<Coordinates>()), Times.Exactly(5));
         }
     }
 }

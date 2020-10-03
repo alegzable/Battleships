@@ -6,13 +6,15 @@ namespace Battleships
 {
     public class BoardGenerator : IBoardGenerator
     {
-        private readonly char[] _validColumns = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'};
-        private readonly int[] _validRows = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+        private readonly char[] _validColumns;
+        private readonly int[] _validRows;
         private readonly List<Ship> _ships = new List<Ship>();
         private readonly Random _random;
 
-        public BoardGenerator()
+        public BoardGenerator(char[] validColumns, int[] validRows)
         {
+            _validColumns = validColumns;
+            _validRows = validRows;
             _random = new Random();
         }
 
@@ -22,15 +24,7 @@ namespace Battleships
             _ships.Add(GetShip("Destroyer", 4));
             _ships.Add(GetShip("Destroyer", 4));
 
-            return new Board(_ships, GetAllCells());
-        }
-
-        private SortedSet<Coordinates> GetAllCells()
-        {
-            var coordinates = _validRows.SelectMany(row =>
-                _validColumns.Select(column => new Coordinates(column, row)));
-
-            return new SortedSet<Coordinates>(coordinates);
+            return new Board(_ships);
         }
 
         private Ship GetShip(string name, int length)

@@ -1,6 +1,4 @@
-﻿using System.Linq;
-
-namespace Battleships
+﻿namespace Battleships
 {
     public class Game
     {
@@ -19,7 +17,7 @@ namespace Battleships
             _commentator = commentator;
         }
 
-        public void Play()
+        public void Play(string firstCoordinates, string lastCoordinates)
         {
             _commentator.Greet();
             _playerName = _commentator.GetPlayerName(_playerName);
@@ -29,7 +27,7 @@ namespace Battleships
 
             while (true)
             {
-                var shotCoordinates = GetShotCoordinates(board);
+                var shotCoordinates = GetShotCoordinates(firstCoordinates, lastCoordinates);
 
                 var shipShotResult = board.ReceiveShot(shotCoordinates);
 
@@ -42,13 +40,11 @@ namespace Battleships
             }
         }
 
-        private Coordinates GetShotCoordinates(IBoard board)
+        private Coordinates GetShotCoordinates(string firstCoordinates, string lastCoordinates)
         {
             while (true)
             {
-                _commentator.AskForShotCoordinates(
-                    board.AllCoordinates.First().ToString(),
-                    board.AllCoordinates.Last().ToString());
+                _commentator.AskForShotCoordinates(firstCoordinates, lastCoordinates);
 
                 var coordinates = _fleetCommander.ProvideCoordinates();
 

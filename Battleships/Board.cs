@@ -6,11 +6,10 @@ namespace Battleships
     public class Board : IBoard
     { 
         public List<Ship> Ships { get; }
-        public SortedSet<Coordinates> AllCoordinates { get; }
-        public Board(List<Ship> ships, SortedSet<Coordinates> allCoordinates)
+        
+        public Board(List<Ship> ships)
         {
             Ships = ships;
-            AllCoordinates = allCoordinates;
         }
 
         public ShipShotResult ReceiveShot(Coordinates coordinates)

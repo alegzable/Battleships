@@ -8,10 +8,13 @@ namespace BattleshipsTests
 {
     public class BoardGeneratorTests
     {
+        private readonly char[] _validColumns = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'};
+        private readonly int[] _validRows = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+        
         [Test]
         public void Generate_ShipsDontOverlap()
         {
-            var boardGenerator = new BoardGenerator();
+            var boardGenerator = new BoardGenerator(_validColumns, _validRows);
             
             var board = boardGenerator.Generate();
             var coordinates = board.Ships
@@ -26,7 +29,7 @@ namespace BattleshipsTests
         [Test]
         public void Generate_CreatesBoardWithCorrectShips()
         {
-            var boardGenerator = new BoardGenerator();
+            var boardGenerator = new BoardGenerator(_validColumns, _validRows);
             
             var board = boardGenerator.Generate();
 

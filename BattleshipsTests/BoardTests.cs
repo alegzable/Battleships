@@ -12,7 +12,11 @@ namespace BattleshipsTests
         public void ReceiveShot_ShipMissed_ReturnsMiss()
         {
             var board = GetBoard();
-            var emptyCoordinates = board.AllCoordinates
+            var columns = new[] {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K'};
+            var rows = new[] {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+            
+            var emptyCoordinates = rows.SelectMany(row =>
+                    columns.Select(column => new Coordinates(column, row)))
                 .First(x => !board.Ships.SelectMany(ship => ship.Position.Get).Contains(x));
 
             var result = board.ReceiveShot(emptyCoordinates);
@@ -82,13 +86,7 @@ namespace BattleshipsTests
                 new Coordinates('B', 2),
             }), "Test2");
 
-            var columns = new[] {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K'};
-            var rows = new[] {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-
-            var coordinates = rows.SelectMany(row =>
-                columns.Select(column => new Coordinates(column, row)));
-
-            return new Board(new List<Ship> {ship1, ship2}, new SortedSet<Coordinates>(coordinates));
+            return new Board(new List<Ship> {ship1, ship2});
         }
     }
 }
