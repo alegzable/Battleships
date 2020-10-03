@@ -29,10 +29,7 @@ namespace Battleships
                 throw new ArgumentOutOfRangeException($"Ship not found. Invalid {nameof(coordinates)}");
             }
 
-            if (!Hits.Contains(coordinates))
-            {
-                Hits = Hits.Add(coordinates);
-            }
+            Hits = Hits.Add(coordinates);
         }
     }
 }
