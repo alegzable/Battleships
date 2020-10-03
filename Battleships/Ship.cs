@@ -11,7 +11,7 @@ namespace Battleships
         public ImmutableHashSet<Coordinates> Hits { get; private set; } = ImmutableHashSet<Coordinates>.Empty;
         public bool IsSunk => Position.SetEquals(Hits);
 
-        public Ship(HashSet<Coordinates> position, string name)
+        public Ship(ISet<Coordinates> position, string name)
         {
             Position = position.ToImmutableHashSet();
             Name = name;
