@@ -1,15 +1,16 @@
 ﻿using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
 
 namespace Battleships
 {
     public class Board : IBoard
     { 
-        public List<Ship> Ships { get; }
+        public ImmutableList<Ship> Ships { get; }
         
-        public Board(List<Ship> ships)
+        public Board(IList<Ship> ships)
         {
-            Ships = ships;
+            Ships = ships.ToImmutableList();
         }
 
         public ShipShotResult ReceiveShot(Coordinates coordinates)

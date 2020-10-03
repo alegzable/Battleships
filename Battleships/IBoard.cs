@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections.Immutable;
 
 namespace Battleships
 {
     public interface IBoard
     {
-        List<Ship> Ships { get; }
+        ImmutableList<Ship> Ships { get; }
         ShipShotResult ReceiveShot(Coordinates coordinates);
     }
 }
