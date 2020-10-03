@@ -2,7 +2,7 @@
 
 namespace Battleships
 {
-    public class Coordinates : IEquatable<Coordinates>, IComparable<Coordinates>
+    public class Coordinates : IEquatable<Coordinates>
     {
         public char Column { get; }
         public int Row { get; }
@@ -51,22 +51,6 @@ namespace Battleships
         public override int GetHashCode()
         {
             return HashCode.Combine(Column, Row);
-        }
-
-        public int CompareTo(Coordinates other)
-        {
-            if (ReferenceEquals(this, other))
-            {
-                return 0;
-            }
-            if (ReferenceEquals(null, other))
-            {
-                return 1;
-            }
-            
-            var columnComparison = Column.CompareTo(other.Column);
-            
-            return columnComparison != 0 ? columnComparison : Row.CompareTo(other.Row);
         }
     }
 }
