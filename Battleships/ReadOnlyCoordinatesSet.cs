@@ -3,19 +3,19 @@ using System.Linq;
 
 namespace Battleships
 {
-    public class ReadonlyCoordinatesSet
+    public class ReadOnlyCoordinatesSet
     {
         protected readonly HashSet<Coordinates> Coordinates;
         
         public IReadOnlyCollection<Coordinates> Get => Coordinates.ToList().AsReadOnly();
-        public ReadonlyCoordinatesSet(HashSet<Coordinates> coordinates = null)
+        public ReadOnlyCoordinatesSet(HashSet<Coordinates> coordinates = null)
         {
             Coordinates = coordinates ?? new HashSet<Coordinates>();
         }
 
-        public bool SetEquals(ReadonlyCoordinatesSet readonlyCoordinates)
+        public bool SetEquals(ReadOnlyCoordinatesSet readOnlyCoordinates)
         {
-            return Coordinates.SetEquals(readonlyCoordinates.Coordinates);
+            return Coordinates.SetEquals(readOnlyCoordinates.Coordinates);
         }
 
         public bool Contains(Coordinates coordinates)

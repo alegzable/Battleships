@@ -1,6 +1,6 @@
 ﻿namespace Battleships
 {
-    public class CoordinatesSet : ReadonlyCoordinatesSet
+    public class CoordinatesSet : ReadOnlyCoordinatesSet
     {
         public void Add(Coordinates coordinates)
         {

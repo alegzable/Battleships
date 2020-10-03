@@ -6,13 +6,13 @@ namespace Battleships
     public class Ship
     {
         public string Name { get; }
-        public ReadonlyCoordinatesSet Position { get; }
+        public ReadOnlyCoordinatesSet Position { get; }
         public CoordinatesSet Hits { get; } = new CoordinatesSet();
         public bool IsSunk => Position.SetEquals(Hits);
 
         public Ship(HashSet<Coordinates> position, string name)
         {
-            Position = new ReadonlyCoordinatesSet(position);
+            Position = new ReadOnlyCoordinatesSet(position);
             Name = name;
         }
 
