@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Battleships;
 using FluentAssertions;
 using NUnit.Framework;
@@ -84,7 +83,7 @@ namespace BattleshipsTests
             ship.TakeHit(shipCoordinates[0]);
             ship.TakeHit(shipCoordinates[0]);
 
-            ship.Hits.Get.Count.Should().Be(1);
+            ship.Hits.Count.Should().Be(1);
         }
 
         [Test]

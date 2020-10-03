@@ -18,9 +18,9 @@ namespace BattleshipsTests
             
             var board = boardGenerator.Generate();
             var coordinates = board.Ships
-                .SelectMany(ship => ship.Position.Get)
+                .SelectMany(ship => ship.Position)
                 .ToList();
-            
+
             var uniqueCoordinates = new HashSet<Coordinates>(coordinates);
 
             uniqueCoordinates.Count.Should().Be(coordinates.Count);
@@ -36,12 +36,12 @@ namespace BattleshipsTests
             board.Ships.Count.Should().Be(3);
             
             board.Ships
-                .Count(ship => ship.Name == "Battleship" && ship.Position.Get.Count == 5)
+                .Count(ship => ship.Name == "Battleship" && ship.Position.Count == 5)
                 .Should()
                 .Be(1);
             
             board.Ships
-                .Count(ship => ship.Name == "Destroyer" && ship.Position.Get.Count == 4)
+                .Count(ship => ship.Name == "Destroyer" && ship.Position.Count == 4)
                 .Should()
                 .Be(2);
         }

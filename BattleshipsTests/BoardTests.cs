@@ -17,7 +17,7 @@ namespace BattleshipsTests
             
             var emptyCoordinates = rows.SelectMany(row =>
                     columns.Select(column => new Coordinates(column, row)))
-                .First(x => !board.Ships.SelectMany(ship => ship.Position.Get).Contains(x));
+                .First(x => !board.Ships.SelectMany(ship => ship.Position).Contains(x));
 
             var result = board.ReceiveShot(emptyCoordinates);
 
@@ -29,7 +29,7 @@ namespace BattleshipsTests
         public void ReceiveShot_ShipHit_ReturnsHit()
         {
             var board = GetBoard();
-            var hitCoordinates = board.Ships[0].Position.Get.First();
+            var hitCoordinates = board.Ships[0].Position.First();
 
             var result = board.ReceiveShot(hitCoordinates);
 
@@ -42,7 +42,7 @@ namespace BattleshipsTests
         public void ReceiveShot_AllPositionsOfSingleShipHit_ReturnsSunk()
         {
             var board = GetBoard();
-            var shipCoordinates = board.Ships[0].Position.Get;
+            var shipCoordinates = board.Ships[0].Position;
             ShipShotResult result = null;
 
             foreach (var coordinates in shipCoordinates)
@@ -59,7 +59,7 @@ namespace BattleshipsTests
         public void ReceiveShot_AllShipsSunk_ReturnsWin()
         {
             var board = GetBoard();
-            var shipCoordinates = board.Ships.SelectMany(ship => ship.Position.Get);
+            var shipCoordinates = board.Ships.SelectMany(ship => ship.Position);
             ShipShotResult result = null;
 
             foreach (var coordinates in shipCoordinates)
