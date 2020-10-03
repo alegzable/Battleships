@@ -36,12 +36,12 @@ namespace BattleshipsTests
             board.Ships.Count.Should().Be(3);
             
             board.Ships
-                .Count(ship => ship.Name == "Battleship" && ship.Position.Get.Count() == 5)
+                .Count(ship => ship.Name == "Battleship" && ship.Position.Get.Count == 5)
                 .Should()
                 .Be(1);
             
             board.Ships
-                .Count(ship => ship.Name == "Destroyer" && ship.Position.Get.Count() == 4)
+                .Count(ship => ship.Name == "Destroyer" && ship.Position.Get.Count == 4)
                 .Should()
                 .Be(2);
         }

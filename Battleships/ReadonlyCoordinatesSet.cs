@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Battleships
 {
@@ -6,7 +7,7 @@ namespace Battleships
     {
         protected readonly HashSet<Coordinates> Coordinates;
         
-        public IEnumerable<Coordinates> Get => Coordinates;
+        public IReadOnlyCollection<Coordinates> Get => Coordinates.ToList().AsReadOnly();
         public ReadonlyCoordinatesSet(HashSet<Coordinates> coordinates = null)
         {
             Coordinates = coordinates ?? new HashSet<Coordinates>();

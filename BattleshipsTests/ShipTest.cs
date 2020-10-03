@@ -84,7 +84,7 @@ namespace BattleshipsTests
             ship.TakeHit(shipCoordinates[0]);
             ship.TakeHit(shipCoordinates[0]);
 
-            ship.Hits.Get.Count().Should().Be(1);
+            ship.Hits.Get.Count.Should().Be(1);
         }
 
         [Test]
