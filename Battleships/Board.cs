@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Battleships
 {
-    public class Board
+    public class Board : IBoard
     { 
         public List<Ship> Ships { get; }
         public SortedSet<Coordinates> AllCoordinates { get; }

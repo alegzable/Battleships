@@ -9,5 +9,9 @@
     &lt;TestId&gt;NUnit3x::70F7569C-DE2D-4E72-AF32-CE38B23BFD6E::.NETCoreApp,Version=v3.1::BattleshipsTests.BoardTests.ReceiveShot_ShipMissed_ReturnsMiss&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::70F7569C-DE2D-4E72-AF32-CE38B23BFD6E::.NETCoreApp,Version=v3.1::BattleshipsTests.BoardTests&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;NUnit3x::70F7569C-DE2D-4E72-AF32-CE38B23BFD6E::.NETCoreApp,Version=v3.1::BattleshipsTests.MaybeTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::70F7569C-DE2D-4E72-AF32-CE38B23BFD6E::.NETCoreApp,Version=v3.1::BattleshipsTests.GameTests.FT&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::70F7569C-DE2D-4E72-AF32-CE38B23BFD6E::.NETCoreApp,Version=v3.1::BattleshipsTests.GameTests.Play_AllShipsSunk_StopsRunning&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::70F7569C-DE2D-4E72-AF32-CE38B23BFD6E::.NETCoreApp,Version=v3.1::BattleshipsTests.GameTests.Play_AllShipsSuns_StopsRunning&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;NUnit3x::70F7569C-DE2D-4E72-AF32-CE38B23BFD6E::.NETCoreApp,Version=v3.1::BattleshipsTests.GameTests&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

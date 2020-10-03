@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            new Game().Play();
+            new Game(new BoardGenerator(), new ConsoleCoordinatesReader(), new ConsoleCommentator()).Play();
         }
     }
 }

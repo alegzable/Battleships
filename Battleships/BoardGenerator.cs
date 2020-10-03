@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Battleships
 {
-    public class BoardGenerator
+    public class BoardGenerator : IBoardGenerator
     {
         private readonly char[] _validColumns = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'};
         private readonly int[] _validRows = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
@@ -16,7 +16,7 @@ namespace Battleships
             _random = new Random();
         }
 
-        public Board Generate()
+        public IBoard Generate()
         {
             _ships.Add(GetShip("Battleship", 5));
             _ships.Add(GetShip("Destroyer", 4));
